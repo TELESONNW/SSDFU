@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Switch Color</title> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+<script>
+
+
+function getSecretJson(){  
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function(){  
+    if (this.readyState == 3 && this.status == 200) {   
+      //document.getElementById("LEDState").innerHTML =
+	  var obj =  JSON.parse(this.responseText);
+    for (var i=1; i <3; i++) {
+		document.getElementById("clr" + i).value = obj['clr'+i]; 
+    document.getElementById("bclr" + i).value = obj['bclr'+i]; 
+	  }
+	  console.log(obj);
+    }
+  };
+  xhttp.open("GET", "color.json", true);
+  xhttp.send();
+ }
+  
+ 
+ 
+</script> 
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+   
+   *{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins',sans-serif;
+   }
+   
+   body{
+     
+     height: auto;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 10px;
+     background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   }
+   .container{
+    
+     transform: translate(0%, 3%);
+     max-width: 700px;
+     width: 100%;
+     height: 100%;
+     background-color: #fff;
+     padding: 15px 25px;
+     border-radius: 5px;
+     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+   }
+   .img{
+    width: 35px; height: 35px; border-radius: 30%;
+   }
+    
+    .content button{
+      height: 100%;
+      width: 100%;
+      padding: 10px 5px;
+      margin: 20px 0 12px 0;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    .content button:hover{
+     /* transform: scale(0.99); */
+     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+     }
+   
+   .container .title{
+     font-size: 35px;
+     font-weight: 500;
+     position: relative;
+   }
+   .container .title::before{
+     content: "";
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     height: 3px;
+     width: 30px;
+     border-radius: 5px;
+     background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   }
+   .content form .user-details{
+     display:flex;
+     padding-top: 15px;
+     flex-wrap:wrap;
+     justify-content: space-between;
+     margin: 20px 0 12px 0;
+   }
+   form .user-details .input-box{
+     margin-bottom: 15px;
+     width: calc(100% / 2 - 10px);
+     height: 100%;
+   }
+   form .input-box span.details{
+     display:flex;
+     font-weight: 500;
+     margin-bottom: 5px;
+   }
+   .user-details .input-box input{
+     height: 45px;
+     width: 100%;
+     outline: none;
+     font-size: 16px;
+     border-radius: 5px;
+     padding: 2px;
+     border: 1px solid #ccc;
+     border-bottom-width: 2px;
+     transition: all 0.3s ease;
+   }
+   .user-details .input-box input:focus,
+   .user-details .input-box input:valid{
+     border-color: #9b59b6;
+   }
+    form .gender-details .gender-title{
+     font-size: 20px;
+     font-weight: 500;
+    }
+    form .category{
+      display: flex;
+      width: 80%;
+      margin: 14px 0 ;
+      justify-content: space-between;
+    }
+    form .category label{
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    form .category label .dot{
+     height: 18px;
+     width: 18px;
+     border-radius: 50%;
+     margin-right: 10px;
+     background: #d9d9d9;
+     border: 5px solid transparent;
+     transition: all 0.3s ease;
+   }
+    #dot-1:checked ~ .category label .one,
+    #dot-2:checked ~ .category label .two,
+    #dot-3:checked ~ .category label .three{
+      background: #9b59b6;
+      border-color: #d9d9d9;
+    }
+    form input[type="radio"]{
+      display: none;
+    }
+    form .button{
+      height: 45px;
+      margin: 20px 0;
+    }
+    form .button input{
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    form .button input:hover{
+     /* transform: scale(0.99); */
+     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+     }
+      @media(max-width: 584px){
+     .container{
+       max-width: 100%;
+      }
+      form .user-details .input-box{
+       margin-bottom: 15px;
+       width: 100%;
+     }
+     form .category{
+       width: 100%;
+     }
+    
+     .user-details::-webkit-scrollbar{
+       width: 5px;
+     }
+     }
+     @media(max-width: 459px){
+     .container .content .category{
+       flex-direction: column;
+     }
+   }
+</style>
+ 
+</head>
+
+
+<body>
+<div class="container">
+  <div class="title">Switch Color </div>
+  <div class="content">
+  
+    <form action="/savecolor/" method="POST" >
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Switch Border:</span>
+          <input type="color" list="listname1" id="clr1" name="clr1" value="#9b59b6" >
+          <datalist id="listname1">
+            <option value="#f50505">#f50505</option>
+            <option value="#0505f5">#0505f5</option>
+            <option value="#02d422">#02d422</option>
+            <option value="#eb8705">#eb8705</option>
+            <option value="#db0453">#db0453</option>
+            <option value="#e602b0">#e602b0</option>
+            <option value="#160af5">#160af5</option> 
+            
+            <option value="#0bde16">#0bde16</option>
+            <option value="#5abdfa">#5abdfa</option>
+            <option value="#e574ed">#e574ed</option>
+            <option value="#b085ed">#b085ed</option>
+            <option value="#f272e5">#f272e5</option> 
+            <option value="#72f292">#72f292</option>
+            <option value="#a3f272">#a3f272</option>
+            <option value="#f2e772">#f2e772</option> 
+            
+            <option value="#1f1f1c">#1f1f1c</option> 
+
+            </datalist>
+        </div>
+      
+        <div class="input-box">
+          <span class="details">Switch Background:</span>
+          <input type="color" list="listname2" id="clr2" name="clr2" value="#9b59b6" >
+          <datalist id="listname2">
+            <option value="#34ebd8">#34ebd8</option>
+            <option value="#e574ed">#e574ed</option>
+            <option value="#b085ed">#b085ed</option>
+            <option value="#f272e5">#f272e5</option> 
+            <option value="#72f292">#72f292</option>
+            <option value="#a3f272">#a3f272</option>
+            <option value="#f2e772">#f2e772</option> 
+            
+            <option value="#f50505">#f50505</option>
+            <option value="#0505f5">#0505f5</option>
+            <option value="#02d422">#02d422</option>
+            <option value="#eb8705">#eb8705</option>
+            <option value="#1f1f1c">#1f1f1c</option> 
+            <option value="#db0453">#db0453</option>
+            <option value="#e602b0">#e602b0</option>
+            <option value="#160af5">#160af5</option> 
+            
+            <option value="#7cf7f3">#7cf7f3</option>
+
+            </datalist>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Background Left To Right:</span>
+          <input type="color" list="listname3" id="bclr1" name="bclr1" value="#ffffff" >
+          <datalist id="listname3">
+            <option value="#f50505">#f50505</option>
+            <option value="#0505f5">#0505f5</option>
+            <option value="#02d422">#02d422</option>
+            <option value="#eb8705">#eb8705</option>
+            <option value="#1f1f1c">#1f1f1c</option> 
+            <option value="#db0453">#db0453</option>
+            <option value="#e602b0">#e602b0</option>
+            <option value="#160af5">#160af5</option> 
+            
+            <option value="#0bde16">#0bde16</option>
+            <option value="#5abdfa">#5abdfa</option>
+            <option value="#e574ed">#e574ed</option>
+            <option value="#b085ed">#b085ed</option>
+            <option value="#f272e5">#f272e5</option> 
+            <option value="#72f292">#72f292</option>
+            <option value="#a3f272">#a3f272</option>
+            <option value="#f2e772">#f2e772</option> 
+
+            </datalist>
+        </div>
+      
+        <div class="input-box">
+          <span class="details">Background Right To Left:</span>
+          <input type="color" list="listname4" id="bclr2" name="bclr2" value="#ffffff" >
+          <datalist id="listname4">
+            <option value="#34ebd8">#34ebd8</option>
+            <option value="#7cf7f3">#7cf7f3</option>
+            <option value="#e574ed">#e574ed</option>
+            <option value="#b085ed">#b085ed</option>
+            <option value="#f272e5">#f272e5</option> 
+            <option value="#72f292">#72f292</option>
+            <option value="#a3f272">#a3f272</option>
+            <option value="#f2e772">#f2e772</option> 
+            
+            <option value="#f50505">#f50505</option>
+            <option value="#0505f5">#0505f5</option>
+            <option value="#02d422">#02d422</option>
+            <option value="#eb8705">#eb8705</option>
+            <option value="#1f1f1c">#1f1f1c</option> 
+            <option value="#db0453">#db0453</option>
+            <option value="#e602b0">#e602b0</option>
+            <option value="#160af5">#160af5</option> 
+
+            </datalist>
+        </div>
+        
+      </div>
+       
+      <div class="button">
+        <input type="submit" value="Save"/>
+      </div> 
+      
+    </form>
+    <button onclick= "window.location.href = '/setup'">Back To Setup</button> 
+  </div>
+</div>
+<script>
+getSecretJson();
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!-- index.html -->
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Smart System OTA </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{
+    align-items: center;
+    text-align: center;
+    margin: 10%;
+  }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 2px 16px;
+}
+.btn{float: left;border: 3px solid skyblue; height: 45px; width: 80%; border-radius: 14px;  background-color: aliceblue; text-align: center;color: blue; }
+</style>
+</head>
+
+<body> 
+
+  <div class="card">
+    <img src="lo.png" alt="Avatar" style="width:125px; height: 125px; margin: 10%;">
+    <h1>Smart System OTA </h1>
+    <a class="btn" onclick= "window.location.href = '/wifi_manager.html'"> Wifi Setup </a>
+    <a class="btn" onclick= "window.location.href = '/wifi_upload.html'"> OTA </a>
+    <a class="btn" onclick= "window.location.href = '/wifi_spiffs_admin.html'"> SPIFFS Manger</a>
+    <a class="btn" onclick="restartRequest()">Restart</a>
+    
+    
+      
+
+    
+   
+  </div>
+
+
+</body>
+
+<script>
+function restartRequest() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText)
+    }
+  }
+  xhttp.open("GET", "/restart", true); 
+  xhttp.send(null);
+}
+</script>
+</html>

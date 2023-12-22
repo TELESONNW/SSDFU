@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>ESP32 ESP-NOW & WEB SERVER (CONTROLLING)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html {font-family: Arial; display: inline-block; text-align: center;}
+      p {font-size: 1.2rem;}
+      body {margin: 0;}
+      .topnav {overflow: hidden; background-color: #6C0BA9; color: white; font-size: 1.5rem;}
+      .content {padding: 20px; }
+      .card {background-color: white; box-shadow: 0px 0px 10px 1px rgba(140,140,140,.5); border: 1px solid #6C0BA9; border-radius: 15px;}
+      .card.header {background-color: #6C0BA9; color: white; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 12px; border-top-left-radius: 12px;}
+      .cards {max-width: 700px; margin: 0 auto; display: grid; grid-gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
+  .selt {
+      height:50px; 
+      width: 140px;
+      background-color: rgb(240, 255, 255);
+      align-items: center;
+      text-align: center;
+      
+      margin-top: 6px;
+      border: 3px solid rgb(3, 3, 19);
+      border-radius:10px; 
+       padding:15px;
+
+  }
+  .selt:hover {
+      background-color:#38e3fa;
+      transition: 0.7s;
+  }
+.button {
+    
+    margin-top: 6px;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+  }
+  .button:hover {
+      background-color:#002ead;
+      transition: 0.7s;
+  }
+
+      /* ----------------------------------- */
+    </style>
+  </head>
+  
+  <body>
+ 
+    <div >
+  <select  class="selt" id="boardid" >
+    <option value="0">BOARD ID</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+</div>
+ <div >
+  <select  class="selt" id="btnid" >
+    <option value="0">BUTTON NO</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+  </select>
+</div>
+  <button type="button" class="button" onclick="sendesp_Cmd()" >SEND CMD</button>
+<br>
+  
+    <script>
+      // ---------------------------------------------------------------------- 
+       function sendesp_Cmd(){
+        var brd = document.getElementById("boardid").value;
+        var btn = document.getElementById("btnid").value;
+        var val = "1";
+        send_cmd(brd ,btn ,val );
+        }
+      // ---------------------------------------------------------------------- XMLHttpRequest to submit data.
+      function send_cmd(board,gpio,value) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "set_LED?board="+board+"&gpio_output="+gpio+"&val="+value, true);
+        xhr.send();
+      }
+      // ---------------------------------------------------------------------- 
+    </script>
+  </body>
+</html>

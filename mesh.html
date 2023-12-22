@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+  	<title>CMD BUTTON Setup</title>
+    
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<script>
+
+ 
+
+function getSecretJson() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 13 && this.status == 200) {
+      //document.getElementById("LEDState").innerHTML =
+	  var obj =  JSON.parse(this.responseText);
+	  for (var i=1; i <13; i++) {
+		document.getElementById("data" + i).value = obj['data'+i]; 
+	  }
+	  console.log(obj);
+    }
+  };
+  xhttp.open("GET", "meshdata.json", true);
+  xhttp.send();
+ }
+
+ 
+ 
+</script> 
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins',sans-serif;
+}
+
+body{
+
+height: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.container{
+transform: translate(0%, 1%);
+max-width: 700px;
+width: 100%;
+height: 100%;
+background-color: #fff;
+padding: 25px 30px;
+border-radius: 5px;
+box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+
+.content button{
+height: 100%;
+width: 100%;
+padding: 10px 5px;
+margin: 20px 0 12px 0;
+border-radius: 5px;
+border: none;
+color: #fff;
+font-size: 18px;
+font-weight: 500;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.content button:hover{
+/* transform: scale(0.99); */
+background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+.container .title{
+font-size: 25px;
+font-weight: 500;
+position: relative;
+}
+form label{
+  font-weight: 500;
+  font-size: 24px;
+}
+form select{
+ width: 94%;
+ padding: 15px;
+ margin: 3%;
+ border: 3px solid blue;
+ border-radius: 15px;
+ font-weight: 500;
+ font-size: 20px;
+}
+.grp{
+  font-size: 18px;
+font-weight: 500; 
+ color: rgb(0, 0, 0);
+}
+.grp option{
+  margin: 7px;
+  padding: 6px;
+}
+.container .title::before{
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+height: 3px;
+width: 30px;
+border-radius: 5px;
+background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.content form .user-details{
+display:flex;
+flex-wrap:wrap;
+justify-content: space-between;
+margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+margin-bottom: 15px;
+width: calc(100% / 2 - 10px);
+height: 100%;
+}
+form .input-box span.details{
+display:flex;
+font-weight: 500;
+margin-bottom: 5px;
+}
+.user-details .input-box input{
+height: 45px;
+width: 100%;
+outline: none;
+font-size: 16px;
+border-radius: 5px;
+padding-left: 15px;
+border: 1px solid #ccc;
+border-bottom-width: 2px;
+transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+border-color: #9b59b6;
+}
+form .gender-details .gender-title{
+font-size: 20px;
+font-weight: 500;
+}
+form .category{
+display: flex;
+width: 80%;
+margin: 14px 0 ;
+justify-content: space-between;
+}
+form .category label{
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+form .category label .dot{
+height: 18px;
+width: 18px;
+border-radius: 50%;
+margin-right: 10px;
+background: #d9d9d9;
+border: 5px solid transparent;
+transition: all 0.3s ease;
+}
+#dot-1:checked ~ .category label .one,
+#dot-2:checked ~ .category label .two,
+#dot-3:checked ~ .category label .three{
+background: #9b59b6;
+border-color: #d9d9d9;
+}
+form input[type="radio"]{
+display: none;
+}
+form .button{
+height: 45px;
+margin: 15px 0;
+}
+form .button input{
+height: 100%;
+width: 100%;
+border-radius: 5px;
+border: none;
+color: #fff;
+font-size: 18px;
+font-weight: 500;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+form .button input:hover{
+/* transform: scale(0.99); */
+background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+@media(max-width: 584px){
+.container{
+max-width: 100%;
+}
+form .user-details .input-box{
+ margin-bottom: 15px;
+ width: 100%;
+}
+form .category{
+ width: 100%;
+}
+
+.user-details::-webkit-scrollbar{
+ width: 5px;
+}
+}
+@media(max-width: 459px){
+.container .content .category{
+ flex-direction: column;
+}
+}
+  </style>
+ 
+</head>
+
+
+<body onload="getIpAddr()">
+  <div class="container">
+    <div class="title">CMD ADD BUTTON</div>
+    <div class="content">
+   
+
+ <form action="/savemeshdata/" method="POST" >
+  <div class="user-details">
+	
+<div class="input-box"> 
+	<span class="details">Switch 1:</span>
+	<input type="text" list="listname1" id="data1" name="data1"  placeholder=" Switch Name" maxlength="32" size="16">
+ 
+	 
+</div>
+<div class="input-box"> 
+	<span class="details">CMD Switch 1:</span>
+	<input type="text" list="listname1" id="data7" name="data7"  placeholder="send_cmd(group id,room id,board id,button no,device id,value)">
+</div>
+<div class="input-box">
+	<span class="details">Switch 2:</span>
+	<input type="text" list="listname2" id="data2" name="data2"  placeholder=" Switch Name" maxlength="32" size="16">
+	 
+	 
+</div>
+<div class="input-box"> 
+	<span class="details">CMD Switch 2:</span>
+	<input type="text" list="listname1" id="data8" name="data8" placeholder="send_cmd(group id,room id,board id,button no,device id,value)">
+</div>
+<div class="input-box">
+	<span class="details">Switch 3:</span>
+	<input type="text" list="listname3" id="data3" name="data3"  placeholder=" Switch Name " maxlength="32" size="16">
+	 
+	 
+</div>
+<div class="input-box"> 
+	<span class="details">CMD Switch 3:</span>
+	<input type="text" list="listname1" id="data9" name="data9" placeholder="send_cmd(group id,room id,board id,button no,device id,value)">
+</div>
+<div class="input-box">
+	 
+	<span class="details">Switch 4:</span>
+	<input type="text" list="listname4" id="data4" name="data4"  placeholder=" Switch Name " maxlength="32" size="16">
+    
+</div>
+<div class="input-box"> 
+	<span class="details">CMD Switch 4:</span>
+	<input type="text" list="listname1" id="data10" name="data10" placeholder="send_cmd(group id,room id,board id,button no,device id,value)">
+</div>
+<div class="input-box">
+	<span class="details">Switch 5:</span>
+	<input type="text" list="listname5" id="data5" name="data5"  placeholder=" Switch Name" maxlength="32" size="16">
+	 
+</div>
+<div class="input-box"> 
+	<span class="details">CMD Switch 5:</span>
+	<input type="text" list="listname1" id="data11" name="data11" placeholder="send_cmd(group id,room id,board id,button no,device id,value)" >
+</div>
+<div class="input-box">
+	<span class="details">Switch 6:</span>
+	<input type="text" list="listname6" id="data6" name="data6"  placeholder=" Switch Name" maxlength="32" size="16">
+ 
+	  
+</div>
+<div class="input-box"> 
+	<span class="details">CMD Switch 6:</span>
+	<input type="text" list="listname1" id="data12" name="data12"  placeholder="send_cmd(group id,room id,board id,button no,device id,value)" >
+</div>
+
+	<!-- Clear form -->
+</div>
+  <div class="button">
+    <input type="submit" value="Save"/>
+  </div> 
+  
+ </form>
+ <button onclick= "window.location.href = '/setup'">Back To Setup</button> 
+ <br>
+	<span class="details">send_cmd(group id,room id,board id,button no,device id,value)</span>
+	<span class="details">Ex : send_cmd(2,12,4,5,3,1)</span><br>
+	<span class="details">send_cmd()</span><br>
+
+ 
+</div>
+
+</div>
+<script>
+getSecretJson();
+</script>
+</body>
+</html>

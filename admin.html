@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><meta name='description' ><meta name='author' content=''><link rel="shortcut icon" href="/loo"/><title>Welcome</title>
+  <script> function autoRefresh() {    window.location = window.location.href;  }   setInterval('autoRefresh()', 15000); 
+    function uidatahtml() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	  var obj =  JSON.parse(this.responseText);
+	  if (obj.scan_result.length) {
+		var htmlSrc = '';
+		for (var i=0; i< obj.scan_result.length; i++) {
+      document.body.style.background = "linear-gradient(135deg,"+ obj.scan_result[i].BCOLOR1 +"," + obj.scan_result[i].BCOLOR2 +")"; 
+      document.getElementById("myFrame").src = "http://4.3.2." + obj.scan_result[i].MYIP + ""; 
+       document.getElementById("myFrame1").src = "http://" + obj.scan_result[i].IP1 + ""; 
+       document.getElementById("myFrame2").src = "http://" + obj.scan_result[i].IP2 + ""; 
+       document.getElementById("myFrame3").src = "http://" + obj.scan_result[i].IP3 + ""; 
+       document.getElementById("myFrame4").src = "http://" + obj.scan_result[i].IP4 + ""; 
+       document.getElementById("myFrame5").src = "http://" + obj.scan_result[i].IP5 + "";  
+       document.getElementById("myFrame6").src = "http://" + obj.scan_result[i].IP6 + ""; 
+       htmlSrc += '<iframe id="myFrame"  sandbox="allow-same-origin allow-scripts all" src="/index.html"></iframe>';
+      if (obj.scan_result[i].IP1.length > 1){ htmlSrc += '<iframe id="myFrame1" sandbox="allow-same-origin allow-scripts all" src="/index.html"></iframe> '; }
+			if (obj.scan_result[i].IP2.length > 1){ htmlSrc += '<iframe id="myFrame2" sandbox="allow-same-origin allow-scripts all" src="/index.html"></iframe> '; }
+      if (obj.scan_result[i].IP3.length > 1){ htmlSrc += '<iframe id="myFrame3" sandbox="allow-same-origin allow-scripts all" src="/index.html"></iframe> '; }
+      if (obj.scan_result[i].IP4.length > 1){ htmlSrc += '<iframe id="myFrame4" sandbox="allow-same-origin allow-scripts all" src="/index.html"></iframe> '; }
+      if (obj.scan_result[i].IP5.length > 1){ htmlSrc += '<iframe id="myFrame5" sandbox="allow-same-origin allow-scripts all" src="/index.html"></iframe> '; }
+      if (obj.scan_result[i].IP6.length > 1){ htmlSrc += '<iframe id="myFrame6" sandbox="allow-same-origin allow-scripts all" src="/index.html"></iframe> '; }
+		}
+		
+		document.getElementById("wifilist").innerHTML = htmlSrc;
+    
+	  }
+    
+	  console.log(obj);
+    }
+  };
+  xhttp.open("GET", "admindata.json", true);
+  xhttp.send();
+ }
+    
+    </script>
+  <style> *{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins',sans-serif; }
+    body{  justify-content: center;  align-items: center;  padding: 10px; } iframe{width: 418px; height: 560px; border: 3px solid rgb(125, 253, 232); border-radius: 20px;  margin: 2px;}
+    @media(max-width: 1200px){  iframe{  width: 430px;  height: 560px; border: 3px solid rgb(240, 161, 15); border-radius: 20px; margin: 2px; }}
+    @media(max-width: 584px){   body{  padding: 0px; }iframe{ width: 100%; height: 660px; border: none; border-radius: 20px; margin: 0px;}}
+    @media(max-width: 420px){ iframe{ width: 100%; height: 660px; border: none;  margin: 0px;} }</style></head><body onload="uidatahtml()">  
+     
+     <div id="wifilist"></div>
+
+    
+      </body></html>

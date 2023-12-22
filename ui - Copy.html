@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content=""><meta name="author" content=""><link rel="shortcut icon" href="/lo"/>
+  <head> 
+
+    <script>
+      function vibrt() {window.navigator.vibrate(100);}
+      function xxx1() {
+         vibrt();
+        window.location.href = "led1";
+       }
+       function xxx2() {
+        vibrt();
+        window.location.href = "led2";
+       }
+       function xxx3() {
+        vibrt();
+        window.location.href = "led3";
+       }
+       function xxx4() {
+        vibrt();
+        window.location.href = "led4";
+       }
+       function xxx5() {
+        vibrt();
+        window.location.href = "led5";
+       }
+       function xxx6() {
+        vibrt();
+        window.location.href = "led6";
+       }
+       function xxxmi() {
+        vibrt();
+        window.location.href = "mi";
+       }
+       function xxxrgb() {
+        vibrt();
+        window.location.href = "rgb";
+       }
+
+       function xxxbkp() {
+        vibrt();
+        window.location.href = "bkp";
+       }
+     
+    </script>
+     <script>
+      // ---------------------------------------------------------------------- 
+       function sendesp_Cmd(){
+        var group = document.getElementById("groupid").value;
+        var room = document.getElementById("roomid").value;
+        var brd = document.getElementById("boardid").value;
+        var btn = document.getElementById("btnid").value;
+        var devid = document.getElementById("deviceid").value;
+        var val = document.getElementById("vlp").value;
+        var select = 0;
+        if (group == 0 && room == 0 && brd == 0 && btn == 0 && devid == 0 && val < 2){
+          if (confirm("ALL NETWORK DEVICE \n ARE ON / OFF SELECTED \n BACKUP BUTTON FOR OLD STATE")) {
+            send_cmd(group,room,brd ,btn ,devid ,val );
+               } else {
+                location.reload();
+           }
+        } else if (group == 0 && room > 0 && brd == 0 && btn == 0 && devid == 0 && val < 2){
+          if (confirm("SELECTED ROOM ALL SWITCH \n ARE ON / OFF DONE")) {
+            send_cmd(group,room,brd ,btn ,devid ,val );
+               } else {
+                location.reload();
+           }
+          } else if (group > 0 && room == 0 && brd == 0 && btn == 0 && devid == 0 && val < 2){
+          if (confirm("IN GROUP ALL SWITCH\n STATE DONE")) {
+            send_cmd(group,room,brd ,btn ,devid ,val );
+               } else {
+                location.reload();
+           }
+          } else if (group == 0 && room == 0 && brd == 0 && btn == 0 && devid > 0 && val < 2){
+          if (confirm("IN NETWORK ALL DEVICE ID TYPE\n STATE ON / OFF DONE")) {
+            send_cmd(group,room,brd ,btn ,devid ,val );
+               } else {
+                location.reload();
+           }
+          } else if (group > 0 && room == 0 && brd == 0 && btn == 0 && devid > 0 && val < 2){
+          if (confirm("IN GROUP ALL DEVICE TYPE\n STATE DONE")) {
+            send_cmd(group,room,brd ,btn ,devid ,val );
+               } else {
+                location.reload();
+           }
+          } else if (group == 0 && room == 0 && brd == 0 && btn > 0 && devid == 0 && val == 2){
+           alert("INVALID CMD \n BOARD & GROUP REQUIRED \n TOGEAL FUNCTION")
+          } else if (group == 0 && room == 0 && brd == 0 && btn == 0 && devid > 0 && val == 2){
+           alert("INVALID CMD \n STATE ON / OFF REQUIRED")
+      }else{
+
+        send_cmd(group,room,brd ,btn ,devid ,val,select );
+        }
+      }
+      // ---------------------------------------------------------------------- XMLHttpRequest to submit data.
+      function send_cmd(hgroup,hroom,hboard,hgpio,hdevicetype,hvalue,hselect) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "set_LED?group="+hgroup+"&room="+hroom+"&board="+hboard+"&gpio="+hgpio+"&device="+hdevicetype+"&val="+hvalue+"&select="+hselect, true);
+        xhr.send();
+      }
+      // ---------------------------------------------------------------------- 
+    </script>
+    <script>// function autoRefresh() {    window.location = window.location.href;  }   setInterval('autoRefresh()', 15000); 
+    function uidatahtml() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	  var obj =  JSON.parse(this.responseText);
+	  if (obj.scan_result.length) {
+		var htmlSrc = '<span class="nevbtn" style="cursor:pointer"><img src="loo"  onclick= "openNav()" style="width: 60px; height: 60px; border-radius: 50%;"></span>';
+		for (var i=0; i< obj.scan_result.length; i++) {
+      document.body.style.background = "linear-gradient(135deg,"+ obj.scan_result[i].BCOLOR1 +"," + obj.scan_result[i].BCOLOR2 +")"; 
+      htmlSrc += '<div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
+        if (obj.scan_result[i].ASSID.length < 2){ htmlSrc += '<a href="setup"> NEED SETUP</a>';}
+
+      //  htmlSrc += '<div class="cmd" > <input class="iput" list="datagroupid" placeholder="Email" type="number" id="groupid" >';
+        //  htmlSrc += '<datalist id="datagroupid"><option value="0">GROUP</option><option value="1">1</option>  <option value="2">2</option><option value="3">3</option><option value="4">4</option>';
+        //  htmlSrc += ' <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>';
+         // htmlSrc += '<option value="10">10</option><option value="11">11</option><option value="12">12</option></datalist>';
+         htmlSrc += '<div class="cmd" ><div ><select  class="selt" id="groupid" >';
+           htmlSrc += ' <option value="0">GROUP</option>';
+           for (var k = 1;k < 33;k++ ){
+            htmlSrc += '<option value="'+k+'">'+k+'</option>';
+           }
+            htmlSrc += ' </select></div>';
+    
+            htmlSrc += '<div ><select  class="selt" id="roomid" >';
+            htmlSrc += ' <option value="0">ROOM</option>';
+            for (var j = 1;j < 65;j++ ){
+            htmlSrc += '<option value="'+j+'">'+j+'</option>';
+            } 
+           htmlSrc += '</select></div>';
+    
+            htmlSrc += ' <div ><select  class="selt" id="boardid" >';
+              htmlSrc += '  <option value="0">BOARD</option>';
+              for (var j = 1;j < 65;j++ ){
+            htmlSrc += '<option value="'+j+'">'+j+'</option>';
+            } 
+              htmlSrc += '</select></div>';
+
+              htmlSrc += '<div ><select  class="selt" id="btnid" >';
+                htmlSrc += '<option value="0">SWITCH</option>';
+                for (var j = 1;j < 17;j++ ){
+            htmlSrc += '<option value="'+j+'">'+j+'</option>';
+            } 
+                htmlSrc += '</select></div>';
+   
+                htmlSrc += '<div ><select  class="selt" id="deviceid" >';
+                  htmlSrc += '<option value="0">TYPE</option>';
+                  for (var j = 1;j < 65;j++ ){
+            htmlSrc += '<option value="'+j+'">'+j+'</option>';
+            } 
+                  htmlSrc += '</select></div>';
+   
+                  htmlSrc += ' <div ><select  class="selt" id="vlp" ><option value="2">STATE</option><option value="0">OFF</option><option value="1">ON</option></select></div>';
+                  htmlSrc += '<button type="button" class="button" onclick="sendesp_Cmd()" >SEND CMD</button>  <br></div>';
+
+
+                  htmlSrc += ' <a  onclick= "xxxbkp()">BACKUP STATE</a>'; 
+      htmlSrc += ' <a  onclick= "xxxmi()">REMOTE INFO</a>'; 
+     // htmlSrc += ' <a  onclick= "xxxrgb()">RGB CONTROL</a>';  
+      htmlSrc += '</div>';
+      //if (obj.scan_result[i].WIP.length > 10){htmlSrc += '<h2 style="text-align: center;color: #fc4700; text-shadow: 4px 4px 8px #da8313;">IP :' + obj.scan_result[i].WIP +  '</h2>';};
+      //htmlSrc += '<h2 style="text-align: center;color: #fc4700; text-shadow: 4px 4px 8px #da8313;">TEMPRATURE :' + obj.scan_result[i].TEMP +  '</h2>';
+      htmlSrc += ' <div >';
+      
+        htmlSrc += '<table border ="0">';
+          for (var s = 1;j < obj.scan_result[i].ASSID.length;s++ ){
+        htmlSrc += '<tr><td><b>BOARD</b></td><td>23</td> <td><b>BUTTON</b></td><td>4</td> <td><b>DIVID</b></td><td>7</td><td><b>STATUS</b></td><td>OFF</td></tr>';
+          }
+        htmlSrc += '</table>';
+      
+			
+		}
+		htmlSrc += '</div>';
+		document.getElementById("wifilist").innerHTML = htmlSrc;
+    
+	  }
+    
+	  console.log(obj);
+    }
+  };
+  xhttp.open("GET", "uidata.json", true);
+  xhttp.send();
+ }
+    
+    </script>
+  <style> 
+  html {box-sizing: border-box;scroll-behavior: smooth;}
+  *{
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+input,
+textarea,
+button,
+select,
+a{
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active{outline: none;}
+  h3{text-align: center; color: #000066; text-shadow: 4px 4px 8px #000000;}  
+  
+   @media screen and (min-width: 1051px) {.mbtn {width:18%;margin: 1%;float: left;}.btn {margin: 1%;padding: 10%;}.obtn{margin: 8px;padding: 25px;}.btn a{margin: 5px;padding: 45px;} }
+   @media screen and (max-width: 1050px) {.mbtn {width:23%;margin: 1%;float: left;}.btn {margin: 1%;padding: 8%;}.obtn{margin: 8px;padding: 25px;}.btn a{margin: 5px;padding: 45px;}}
+   @media screen and (max-width: 770px) {.mbtn {width:30%;margin: 1%;float: left;}.btn {margin: 0.3%;padding: 6%;}.obtn{margin: 8px;padding: 20px;}.btn a{margin: 5px;padding: 40px;}}
+   @media screen and (max-width: 420px) {.mbtn {width:46%;margin: 1%;float: left;}.btn {margin: 1%;padding: 4%;}.obtn{margin: 10px;padding: 15px;}.btn a{margin: 5px;padding: 40px;}}
+   @media screen and (max-width: 380px) {.mbtn {width:49%;margin: 0%;float: left;}.btn {margin: 1%;padding: 4%;}.obtn{margin: 10px;padding: 13px;}.btn a{margin: 4px;padding: 35px;}}
+    .btn {float: left;width: relative;box-shadow: 2px 2px 5px #000000; border-radius: 45%;}
+    .obtn {text-align: center;box-sizing: border-box;background-color: #ffffff;border: 3px solid #428ea5;border-radius: 50%;cursor: pointer;display: flex;text-align: centre;} 
+    
+   .obtn:hover {border-radius: 60px;box-shadow: 0 0 15px 2px #000000 inset, 0 0 1px 0  #000000;} 
+   .selt {
+     float: left;
+      height:50px; 
+      width: 44%;
+      background-color: rgb(240, 255, 255);
+      align-items: center;
+      text-align: center;
+      font-size: 85%;
+      font-weight: 600; 
+      margin: 2% 2% 3% 3%;
+      border: 3px solid rgb(3, 3, 19);
+      border-radius:10px; 
+       padding:15px;
+
+  }
+
+  .selt:hover {
+      background-color:#38e3fa;
+      transition: 0.7s;
+  }
+.button {
+   float: left;
+      height:50px; 
+      width: 94%;
+      margin: 3%;
+      font-size: 85%;
+      font-weight: 600; 
+    background-color:#0a0a23;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+  }
+  .button:hover {
+      background-color:#002ead;
+      transition: 0.7s;
+  }
+  .fiputd {
+    width: 50%;
+    height: 50px;
+    border-radius: 1em;
+    text-align: center;
+    font-weight: 600;
+    background-color: #ebeef0;
+    border: 2px solid orange; 
+   }
+
+   .iput{
+      float: left;
+      height:40px; 
+      width: 38%;
+      background-color: rgb(240, 255, 255);
+      align-items: center;
+      text-align: center;
+      font-size: 85%;
+      font-weight: 600; 
+      margin: 2% 2% 3% 3%;
+      border: 2px solid rgb(3, 3, 19);
+      border-radius:10px; 
+       padding:1px;
+   }
+   .iput:hover {
+    
+    border: 2px solid rgb(28, 245, 234); 
+   }
+  
+   .btn a {
+      text-align: center;
+      box-sizing: border-box;
+      border: 4px solid #ffffff;
+      border-radius: 50%;cursor: pointer;
+      display: flex;
+      font-size: 1rem;
+      font-weight: 400; 
+     line-height: 1;
+     text-decoration: none;
+     text-align: center;
+     font-weight: 700;
+     border-color: #ffffff;
+     box-shadow: 0 0 1px 0 #428ea5 inset, 0 0 15px 2px  #000000;-webkit-transition: all 150ms ease-in-out;transition: all 150ms ease-in-out;} 
+     .btn a:hover {box-shadow: 0 0 1px 0  #ffffff inset, 0 0 1px 1px  #ffffff;border-radius: 50px;}
+     .btn p {color: #000066; text-shadow: 2px 2px 4px #000000;} 
+     .sidenav {height: 60%;width: 0;margin-top: 10%;margin-bottom: 30%;margin-right: 10%;border-radius: 30px;box-shadow: 2px 2px 5px #428ea5;position: fixed;z-index: 1;top: 0;right: 0;background-color: rgb(255, 255, 255);overflow-x: hidden; transition: 0.5s;padding-top: 60px;}
+     .sidenav a {padding: 8px 8px 8px 32px;text-decoration: none;font-size: 25px;color: #000066;display: block;transition: 0.3s;} .sidenav a:hover {color: #3b1af1;} 
+      .nevbtn{position: absolute;margin-top: 1%;margin-left: 75%;padding: 5px 5px 5px 5px;border-radius: 50%;border: 5px solid  orange;}
+      .nevbtn:hover{border: 5px solid red;}
+      .sidenav .closebtn {position: absolute;top: 0;right: 25px;font-size: 36px;margin-left: 50px;}
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+         .sidenav a {font-size: 22px;text-align: center; color: #000066; text-shadow: 4px 4px 8px #000000;}}
+   </style>
+     
+   
+  </head>
+  <body onload="uidatahtml()">  
+    <div id="wifilist"></div>
+    
+      
+    <script> function openNav() {document.getElementById("mySidenav").style.width = "250px";vibrt();}function closeNav() {document.getElementById("mySidenav").style.width = "0";vibrt();} </script>
+</body></html>  

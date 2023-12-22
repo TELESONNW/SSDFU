@@ -1,0 +1,21 @@
+{
+ "_comment":"---Языковой файл---",
+ "LangDevices":"На главную",
+ "LangOptions1":"Управление",
+ "LangSetting3":"Конфигурация",
+ "LangExample":"Пример",
+ "LangSecM":"Сек.",
+ "LangOffM":"выкл",
+ "LangOnM":"вкл",
+ "LangSave":"Сохранить",
+ "LangCancel":"Отмена",
+ "LangHistory":"История",
+ "LangLoading":"Загрузка...",
+ "LangSorting":"Сортировка",
+ "LangSearch1":"Поиск",
+ "LangLanguage":"Русский",
+ "LangRefresh":"Обновить",
+ "LangHelp":"Помощь",
+ "LangDesign":"вид",
+ "LangDonate":"Подарок"
+}

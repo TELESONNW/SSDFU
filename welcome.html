@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><meta name='description' ><meta name='author' content=''><link rel="shortcut icon" href="/loo"/><title>Welcome</title>
+  <script> function autoRefresh() {    window.location = window.location.href;  }   setInterval('autoRefresh()', 15000); 
+    function uidatahtml() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	  var obj =  JSON.parse(this.responseText);
+	  if (obj.scan_result.length) {
+		var htmlSrc = '<h1 style="text-align: center; color: #000066; text-shadow: 4px 4px 8px #000000;">WELCOME</h1>';
+		for (var i=0; i< obj.scan_result.length; i++) {
+      
+      if (obj.scan_result[i].VENDERN.length > 1){ htmlSrc += '<h1 style="text-align: center; color: #000066; text-shadow: 4px 4px 8px #000000;">'+ obj.scan_result[i].VENDERN +'</h1> '; }else{ htmlSrc += '<h1 style="text-align: center; color: #000066; text-shadow: 4px 4px 8px #000000;">SMART SYSTEM</h1> '; };
+      htmlSrc += '<h2 style="text-align: center;color: #fc4700; text-shadow: 4px 4px 8px #da8313;">SMART BOARD</h2>';
+      htmlSrc += '<div class="centor"> <div class="btn"><div class="obtn">';
+        
+      htmlSrc += '<a href="http://'+ obj.scan_result[i].HIP +'/"><img src="lo" ></a> ';
+      htmlSrc += '</div></div></div>';
+      if (obj.scan_result[i].RT == 0 ){ htmlSrc +='<h3> DVB 3088 KEY 1 2 3 4 5 6</h3>'; 
+ }else if (obj.scan_result[i].RT == 1 ){  htmlSrc +='<h3>DVB 3088 KEY 7 8 9 SIGNAL 0 PUSE</h3>'; 
+ }else if (obj.scan_result[i].RT == 2 ){  htmlSrc +='<h3>DVB 3088 KEY UP DW RI LE V+ V-</h3>'; 
+ }else if (obj.scan_result[i].RT == 3 ){  htmlSrc +='<h3>SD97 MELBARN KEY 1 2 3 4 5 6</h3>'; 
+ }else if (obj.scan_result[i].RT == 4 ){  htmlSrc +='<h3>SD97 MELBARN KEY 7 8 9 AUDIO 0 AV/R</h3>'; 
+ }else if (obj.scan_result[i].RT == 5 ){  htmlSrc +='<h3>SD97 MELBARN KEY UP DW RI LE SEARCH BACK</h3>'; 
+ }else if (obj.scan_result[i].RT == 6 ){  htmlSrc +='<h3>TATA PLAY KEY 1 2 3 4 5 6</h3>'; 
+ }else if (obj.scan_result[i].RT == 7 ){  htmlSrc +='<h3>TATA PLAY KEY 5 6 7 8 9 0</h3>';
+ }else if (obj.scan_result[i].RT == 8 ){  htmlSrc +='<h3>TATA PLAY KEY MUTE HELP R G Y B</h3>'; 
+ }else if (obj.scan_result[i].RT == 9 ){   htmlSrc +='<h3>TATA PLAY KEY UP DW RI LE HOME BK</h3>'; 
+ }else if (obj.scan_result[i].RT == 10 ){   htmlSrc +='<h3>TATA PLAY KEY FAV V+ V- i CH+ CH-</h3>'; 
+ }else if (obj.scan_result[i].RT == 11 ){  htmlSrc +='<h3>TATA PLAY KEY AV ON-D SET G TV APP </h3>';
+ }else{htmlSrc +='<h3>REMOTE NOT SET </h3>';} 
+ if (obj.scan_result[i].WIP.length > 10){htmlSrc += '<a class="btns" href="http://'+ obj.scan_result[i].WIP +'/remote"> ~~~ Set Remote ~~~ </a> ';}else{htmlSrc += '<a class="btns" href="http://'+ obj.scan_result[i].HIP +'/remote"> ~~~ Set Remote ~~~ </a> ';};
+ if (obj.scan_result[i].WIP.length > 10){htmlSrc += '<a class="btns" href="http://'+ obj.scan_result[i].WIP +'/color"> ~~~ Set Color ~~~ </a>  ';}else{htmlSrc += '<a class="btns" href="http://'+ obj.scan_result[i].HIP +'/color"> ~~~ Set Color ~~~ </a>  ';};
+      if (obj.scan_result[i].VENDERM.length > 1){ htmlSrc += '<a class="btns" href="tel:'+ obj.scan_result[i].VENDERM +'"> ~~~ CALL NOW ~~~ </a>  '; }
+      if (obj.scan_result[i].VENDERW.length > 1){ htmlSrc += '<a class="btns" href="https://wa.me/91'+ obj.scan_result[i].VENDERW +'?text=I am interested">WhatsApp ME</a>  '; }
+      if (obj.scan_result[i].VENDERD.length > 1){ htmlSrc += '<h1 style="text-align: center; color: #000066; text-shadow: 4px 4px 8px #000000;">'+ obj.scan_result[i].VENDERD +'</h1> '; }
+			
+		}
+		
+		document.getElementById("wifilist").innerHTML = htmlSrc;
+    
+	  }
+    
+	  console.log(obj);
+    }
+  };
+  xhttp.open("GET", "welcomedata.json", true);
+  xhttp.send();
+ }
+    
+    </script>
+  <style> html {scroll-behavior: smooth;}
+  *{
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+input,
+textarea,
+button,
+select,
+a{
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active{ outline: none;}
+  h3{text-align: center; color: #000066; text-shadow: 4px 4px 8px #000000;} 
+  .centor{  display: flex;  width: 100%; justify-content: center; align-items: center;} 
+  .btn { width: 270px;height: 270px;   padding: 12px;box-shadow: 2px 2px 5px #000000; border: 5px solid rgb(105, 230, 247);border-radius: 50%;box-shadow: 0 0 1px 0 rgb(105, 230, 247) inset, 0 0 45px 5px  rgb(105, 230, 247);} 
+ .btn:hover {box-shadow: 0 0 15px 3px #013509 inset, 0 0 1px 0  #cc3333;} 
+ .obtn {height: 92%; width: relative; margin: 10px;padding: 5px;text-align: center;box-sizing: border-box;background-color: transparent;border: 7px solid rgb(105, 230, 247);border-radius: 50%;cursor: pointer;display: flex;box-shadow: 0 0 1px 0 rgb(105, 230, 247) inset, 0 0 25px 3px  rgb(105, 230, 247);} 
+ .btns {text-align: center; color: #000066;box-shadow: 2px 1px 7px 3px orange inset, 0 0 1px 0  red;float: left;width: 94%;margin: 1% 3%;padding: 5px;box-sizing: border-box;background-color: transparent;border: 7px solid orange;border-radius: 15px;}   
+ .obtn:hover {box-shadow: 0 0 15px 3px #005e15 inset, 0 0 1px 0  #000000;}   
+ .btn a {width: 100%; margin: 25px;text-align: center;box-sizing: border-box;background-color: transparent;border: 6px solid orange;border-radius: 50%;cursor: pointer;display: flex;line-height: 1;padding: 40px;text-decoration: none;border-color: #ffffff;box-shadow: 0 0 12px 5px rgb(105, 230, 247) inset, 0 0 45px 5px  rgb(105, 230, 247);-webkit-transition: all 150ms ease-in-out;transition: all 150ms ease-in-out;} 
+ .btn a:hover {box-shadow: 0 0 1px 0  #ffffff inset, 0 0 1px 1px  #ffffff;}
+ </style></head><body onload="uidatahtml()">  
+     
+     <div id="wifilist"></div>
+
+    
+      </body></html>

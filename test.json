@@ -1,0 +1,70 @@
+{
+ "configs":[
+  "./lang/lang.ru.json"
+ ],
+ "title": [{
+  "type":"text",
+  "title":"Вы открылы вторую страницу!"
+ }],
+ "class":"col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6",
+ "content":[
+
+
+  {
+   "type":"h2",
+   "title":"Сейчас вы открылы test.json файл!"
+  },
+
+  {
+   "type":"text",
+   "title":"Здесь маленький пример из wiki о том как просто вы можете отправлять нужные вам ajax get запросы, попробуйте ниже нажать на отправить (Нажмите Сtrl+M что бы видеть эти GET запросы)",
+   "class":"alert alert-info"
+  },
+
+
+  {
+   "type": "input",
+   "name": "testName",
+   "state":"123"
+  },
+
+  {
+   "type": "button",
+   "title": "Отправить",
+   "action": "device?ssdp=[[testName]]&space=456",
+   "class":"btn btn-info"
+  },
+
+
+  {
+   "type":"text",
+   "style":"margin-top:20px",
+   "title":"В самом верху этого файла у вас есть configs: там обязательно должен быть хотя бы 1 файл туда вы можете добавлять свои json файлы и выводит с них данные на эти страницы. Сейчас мы там грузим файл /lang/lang.ru.json в нем есть переменная LangSave если ее поместить в двойные ковычки, вы сможете вывести ее в любой тип в поле title, вот так {{LangSave}} "
+  },
+
+
+  {
+   "type":"h4",
+   "title":"По всем вопросам вы можете писать мне в Skype: renat2985"
+  },
+
+
+  {
+   "type": "link",
+   "title": "{{LangDevices}} :)",
+   "action": "index.htm",
+   "class":"btn btn-block btn-info"
+  },
+
+
+
+
+
+  {
+   "type":"hr"
+  }
+
+
+ ]
+}
+

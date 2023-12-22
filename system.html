@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>System Files Management Portal - OTA </title>
+    
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src='/jquery.min.js'></script> 
+<style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+   
+   *{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins',sans-serif;
+   }
+   
+   body{
+     
+     height: auto;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 10px;
+     background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   }
+   .container{
+     transform: translate(0%, 1%);
+     max-width: 500px;
+     width: 100%;
+     height: 100%;
+     background-color: #fff;
+     padding: 25px 30px;
+     border-radius: 5px;
+     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+   }
+   
+ 
+    .content button{
+      height: 100%;
+      width: 100%;
+      padding: 10px 5px;
+      margin: 20px 0 12px 0;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    .content button:hover{
+     /* transform: scale(0.99); */
+     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+     }
+   
+   .container .title{
+     font-size: 45px;
+     font-weight: 500;
+     position: relative;
+   }
+  #filelist li{  
+    font-size: 20px;
+    font-weight: 500;
+    
+    margin: 6% 1%;
+     padding: 5px;
+    width: 90%;
+ 
+    border: 2px solid rgb(210, 216, 211);
+    border-radius: 5px;
+  }
+  .content form .user-details{
+     display:flex;
+     flex-wrap:wrap;
+     justify-content: space-between;
+     margin: 20px 0 12px 0;
+   }
+ 
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">System Files</div>
+    <div class="content">
+      
+      <div id="filelist"></div>
+    
+     
+    
+     <button onclick= "window.location.href = '/setup'">Back To Setup</button> 
+    </div>
+  </div>
+ <script>
+
+ 
+ 
+function getFileList() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	  var obj =  JSON.parse(this.responseText);
+	  
+	  if (obj.length) {
+		var htmlSrc = '<ul>';
+		for (var i=0; i< obj.length; i++) {
+			if(obj[i].type == 'file') {
+				htmlSrc += '<li>' + obj[i].name + ' <a href="#" onclick="deleteFile(\'' + obj[i].name + '\')"></a></li>'; 
+			}
+		}
+		htmlSrc += '</ul>';
+		document.getElementById("filelist").innerHTML = htmlSrc;
+	  }
+	  console.log(obj);
+    }
+  };
+  xhttp.open("GET", "/list?dir=/", true);
+  xhttp.send();
+ }
+
+</script>
+<script> getFileList(); </script>
+</body>
+</html>
