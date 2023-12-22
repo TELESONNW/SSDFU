@@ -2,11 +2,8 @@
  "configs":[
   "./lang/lang.ru.json"
  ],
- "title": [{
-  "type":"text",
-  "title":"Вы открылы вторую страницу!"
- }],
- "class":"col-sm-12",
+ 
+
  "content":[
 
 
