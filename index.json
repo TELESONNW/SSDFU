@@ -30,8 +30,8 @@
 
 
   {
-   "type": "ssdfubtn3",
-   "title": "my switch",
+   "type": "ssdfubtn",
+   "title": "my switch3",
    "action": "index.htm?test", 
   },
 
