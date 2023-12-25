@@ -58,120 +58,6 @@ From: Latvia, Valmiera
         text-shadow: 4px 4px 8px #000000;
       }
 
-      @media screen and (min-width: 1051px) {
-        .mbtn {
-          width: 18%;
-          margin: 1%;
-          float: left;
-        }
-
-        .btn {
-          margin: 1%;
-          padding: 10%;
-        }
-
-        .obtn {
-          margin: 8px;
-          padding: 25px;
-        }
-
-        .btn a {
-          margin: 5px;
-          padding: 45px;
-        }
-      }
-
-      @media screen and (max-width: 1050px) {
-        .mbtn {
-          width: 23%;
-          margin: 1%;
-          float: left;
-        }
-
-        .btn {
-          margin: 1%;
-          padding: 8%;
-        }
-
-        .obtn {
-          margin: 8px;
-          padding: 25px;
-        }
-
-        .btn a {
-          margin: 5px;
-          padding: 45px;
-        }
-      }
-
-      @media screen and (max-width: 770px) {
-        .mbtn {
-          width: 30%;
-          margin: 1%;
-          float: left;
-        }
-
-        .btn {
-          margin: 0.3%;
-          padding: 6%;
-        }
-
-        .obtn {
-          margin: 8px;
-          padding: 20px;
-        }
-
-        .btn a {
-          margin: 5px;
-          padding: 40px;
-        }
-      }
-
-      @media screen and (max-width: 460px) {
-        .mbtn {
-          width: 48%;
-          margin: 1%;
-          float: left;
-        }
-
-        .btn {
-          margin: 1%;
-          padding: 4%;
-        }
-
-        .obtn {
-          margin: 10px;
-          padding: 15px;
-        }
-
-        .btn a {
-          margin: 5px;
-          padding: 40px;
-        }
-      }
-
-      @media screen and (max-width: 380px) {
-        .mbtn {
-          width: 49%;
-          margin: 0%;
-          float: left;
-        }
-
-        .btn {
-          margin: 1%;
-          padding: 4%;
-        }
-
-        .obtn {
-          margin: 10px;
-          padding: 13px;
-        }
-
-        .btn a {
-          margin: 4px;
-          padding: 35px;
-        }
-      }
 
       .btn {
         float: left;
@@ -347,18 +233,7 @@ From: Latvia, Valmiera
         margin-left: 50px;
       }
 
-      @media screen and (max-height: 450px) {
-        .sidenav {
-          padding-top: 15px;
-        }
-
-        .sidenav a {
-          font-size: 22px;
-          text-align: center;
-          color: #000066;
-          text-shadow: 4px 4px 8px #000000;
-        }
-      }
+  
 .pop-up {
  z-index:111;
  background-color:#fff;
@@ -409,22 +284,7 @@ input:invalid ~ input[type=button] {
  border-radius:10px;
  margin-top:5%;
 }
-@media (max-width:480px) {
- .block {
-  margin:20px -15px;
- }
- .device {
-  margin-top:0;
- }
- #header {
-  padding:1px 20px 15px;
- }
-}
-@media (min-width:1200px) {
- .block {
-  margin:20px 15px;
- }
-}
+
 h5 {
  background-color:#4db6ac;
  color:#fff;
@@ -633,4 +493,131 @@ ul#history {
  border-top: 2px solid #ff1103;
 }
 
+      @media screen and (min-width: 1051px) {
+        .mbtn {
+          width: 18%;
+          margin: 1%;
+          float: left;
+        }
+
+        .btn {
+          margin: 1%;
+          padding: 10%;
+        }
+
+        .obtn {
+          margin: 8px;
+          padding: 25px;
+        }
+
+        .btn a {
+          margin: 5px;
+          padding: 45px;
+        }
+        .block {
+  margin:20px 15px;
+ }
+      }
+
+      @media screen and (max-width: 1050px) {
+        .mbtn {
+          width: 23%;
+          margin: 1%;
+          float: left;
+        }
+
+        .btn {
+          margin: 1%;
+          padding: 8%;
+        }
+
+        .obtn {
+          margin: 8px;
+          padding: 25px;
+        }
+
+        .btn a {
+          margin: 5px;
+          padding: 45px;
+        }
+      }
+
+      @media screen and (max-width: 770px) {
+        .mbtn {
+          width: 30%;
+          margin: 1%;
+          float: left;
+        }
+
+        .btn {
+          margin: 0.3%;
+          padding: 6%;
+        }
+
+        .obtn {
+          margin: 8px;
+          padding: 20px;
+        }
+
+        .btn a {
+          margin: 5px;
+          padding: 40px;
+        }
+      }
+
+      @media screen and (max-width: 460px) {
+        .mbtn {
+          width: 48%;
+          margin: 1%;
+          float: left;
+        }
+
+        .btn {
+          margin: 1%;
+          padding: 4%;
+        }
+
+        .obtn {
+          margin: 10px;
+          padding: 15px;
+        }
+
+        .btn a {
+          margin: 5px;
+          padding: 40px;
+        }
+        .block {
+  margin:20px -15px;
+ }
+ .device {
+  margin-top:0;
+ }
+ #header {
+  padding:1px 20px 15px;
+ }
+      }
+
+      @media screen and (max-width: 380px) {
+        .mbtn {
+          width: 49%;
+          margin: 0%;
+          float: left;
+        }
+
+        .btn {
+          margin: 1%;
+          padding: 4%;
+        }
+
+        .obtn {
+          margin: 10px;
+          padding: 13px;
+        }
+
+        .btn a {
+          margin: 4px;
+          padding: 35px;
+        }
+      }
+ 
 .animated{animation-duration:.6s;animation-fill-mode:both}@keyframes tdFadeIn{0%{opacity:0}100%{opacity:1}}@keyframes tdFadeOut{0%{opacity:1}100%{opacity:0}}.tdFadeIn{animation-name:tdFadeIn}.tdFadeOut{animation-name:tdFadeOut}@keyframes tdFadeInDown{0%{opacity:0;transform:translateY(-10px);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:1;transform:translateY(0)}}@keyframes tdFadeInLeft{0%{opacity:0;transform:translateX(10px);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:1;transform:translateX(0)}}@keyframes tdFadeInUp{0%{opacity:0;transform:translateY(10px);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:1;transform:translateY(0)}}@keyframes tdFadeInRight{0%{opacity:0;transform:translateX(-10px);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:1;transform:translateX(0)}}@keyframes tdFadeOutUp{0%{opacity:1;transform:translateY(0);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:0;transform:translateY(-10px)}}@keyframes tdFadeOutRight{0%{opacity:1;transform:translateX(0);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:0;transform:translateX(10px)}}@keyframes tdFadeOutDown{0%{opacity:1;transform:translateY(0);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:0;transform:translateY(10px)}}@keyframes tdFadeOutLeft{0%{opacity:1;transform:translateX(0);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:0;transform:translateX(-10px)}}.tdFadeInDown{animation-name:tdFadeInDown}.tdFadeInLeft{animation-name:tdFadeInLeft}.tdFadeInUp{animation-name:tdFadeInUp}.tdFadeInRight{animation-name:tdFadeInRight}.tdFadeOutUp{animation-name:tdFadeOutUp}.tdFadeOutRight{animation-name:tdFadeOutRight}.tdFadeOutDown{animation-name:tdFadeOutDown}.tdFadeOutLeft{animation-name:tdFadeOutLeft}@keyframes tdExpandIn{0%{opacity:0;transform:scale(.85);animation-timing-function:cubic-bezier(0,.59,.375,1)}100%{opacity:1;transform:scale(1)}}.tdExpandIn{animation-name:tdExpandIn}
