@@ -468,10 +468,8 @@ function viewTemplate(jsonPage,jsonResponse,othe_opt) {
      element.innerHTML += '<div class="'+hidden+'">'+option+'</div>';
      setTimeout("loadConfigs('"+state_val+"',jsonResponse)", 500);
     }
+   
     if (type_val == 'link') {
-     element.innerHTML += '<a id="'+name_val+'" class="'+hidden+class_val+'" '+style_val+' href="'+renameGet(obj.action)+'">'+renameBlock(jsonResponse, obj.title)+'<\/a>';
-    }
-    if (type_val == 'ssdfubtn') {
      element.innerHTML += ' <div class="mbtn" > <div  class="btn" style=" border: 2px solid black; background-color: orange;"> <p  style="text-align: center;">'+name_val+'</p>    <div  class="obtn" style=" border: 2px solid black;"><a style="background-color:  green;"  onclick= "'+renameGet(obj.action)+'"></a></div> </div></div> ';
     }
     if (type_val == 'img') {
