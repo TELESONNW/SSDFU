@@ -472,7 +472,7 @@ function viewTemplate(jsonPage,jsonResponse,othe_opt) {
      element.innerHTML += '<a id="'+name_val+'" class="'+hidden+class_val+'" '+style_val+' href="'+renameGet(obj.action)+'">'+renameBlock(jsonResponse, obj.title)+'<\/a>';
     }
     if (type_val == 'ssdfubtn') {
-     element.innerHTML += ' <div class="mbtn" > <div  class="btn" style=" border: 2px solid black; background-color: orange;"> <p  style="text-align: center;">'+renameBlock(jsonResponse, obj.title)+'</p>    <div  class="obtn" style=" border: 2px solid black;"><a style="background-color:  green;"  onclick= "'+renameGet(obj.action)+'"></a></div> </div></div> ';
+     element.innerHTML += ' <div class="mbtn" > <div  class="btn" style=" border: 2px solid black; background-color: orange;"> <p  style="text-align: center;">'+name_val+'</p>    <div  class="obtn" style=" border: 2px solid black;"><a style="background-color:  green;"  onclick= "'+renameGet(obj.action)+'"></a></div> </div></div> ';
     }
     if (type_val == 'img') {
      element.innerHTML += '<img id="'+name_val+'" class="'+hidden+class_val+'" '+style_val+' src="'+renameGet(obj.state)+'" onclick="'+renameGet(obj.action)+'" title="'+renameBlock(jsonResponse, obj.title)+'"\/>';
