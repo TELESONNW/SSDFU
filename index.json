@@ -19,19 +19,19 @@
 
   {
    "type": "ssdfubtn",
-   "title": "my switch1",
+   "id": "my switch1",
    "action": "index.htm?test", 
   },
   {
    "type": "ssdfubtn",
-   "title": "my switch2",
+   "id": "my switch2",
    "action": "index.htm?test", 
   },
 
 
   {
    "type": "ssdfubtn",
-   "title": "my switch3",
+   "id": "my switch3",
    "action": "index.htm?test", 
   },
 
