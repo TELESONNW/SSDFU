@@ -19,21 +19,11 @@
 
   {
    "type": "link",
+   "action": "index.htm?test", 
    "id": "my switch1",
-   "action": "index.htm?test", 
-  },
-  {
-   "type": "link",
-   "id": "my switch2",
-   "action": "index.htm?test", 
+  
   },
 
-
-  {
-   "type": "link",
-   "id": "my switch3",
-   "action": "index.htm?test", 
-  },
 
 
   {
